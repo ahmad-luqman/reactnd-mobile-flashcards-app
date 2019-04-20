@@ -2,18 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import AddDeck from './components/AddDeck';
 import DeckListView from './components/DeckListView';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        {/* <Text>Open up App.js to start working on your app!</Text> */}
-        {/* <AddDeck /> */}
-        <DeckListView />
-      </View>
-    );
-  }
-}
+const Tabs = createBottomTabNavigator({
+  Decks: {
+    screen: DeckListView
+  },
+  AddDeck: {
+    screen: AddDeck
+  },
+})
+
+export default App = createAppContainer(Tabs)
 
 const styles = StyleSheet.create({
   container: {
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
