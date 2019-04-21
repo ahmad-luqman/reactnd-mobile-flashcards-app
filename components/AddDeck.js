@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { black, white } from '../utils/colors';
+import React, { Component } from 'react'
+import { Text, TextInput, TouchableOpacity, StyleSheet, View } from 'react-native'
+import { black, white } from '../utils/colors'
 
 export default class AddDeck extends Component {
   state = {
@@ -9,16 +9,30 @@ export default class AddDeck extends Component {
   render() {
     const { input } = this.state
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>What is the title of your new deck?</Text>
-        <View style={{padding: 10, borderColor: black, borderWidth: 2}}>
-          <TextInput
-          />
+      <View style={styles.container}>
+        <Text style={{fontSize: 50, textAlign: "center"}}>What is the title of your new deck?</Text>
+        <View style={styles.box}>
+          <TextInput placeholder="Deck Title"/>
         </View>
-        <TouchableOpacity style={{backgroundColor: black }}>
-          <Text style={{color: white}}>Submit</Text>
+        <TouchableOpacity style={{backgroundColor: black, marginTop: 20, padding: 10 }}>
+          <Text style={{color: white, alignItems: "center"}}>Submit</Text>
         </TouchableOpacity>
       </View>
-    );
+    )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+  },
+  box: {
+    height: 35,
+    width: 250,
+    borderColor: black,
+    borderWidth: 2,
+  }
+})
