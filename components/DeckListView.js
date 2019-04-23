@@ -1,32 +1,20 @@
 import React, { Component } from 'react'
 import { Text, View, FlatList, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
 
-export default class DeckListView extends Component {
-  decks = [
-    {key: '1', name: 'udacicards', count: 3},
-    {key: '2', name: 'new deck', count: 0},
-    {key: '3', name: 'New deck 2', count: 0},
-    {key: '4', name: 'New deck 2', count: 0},
-    {key: '5', name: 'New deck 2', count: 0},
-    {key: '6', name: 'udacicards', count: 3},
-    {key: '7', name: 'new deck', count: 0},
-    {key: '8', name: 'New deck 2', count: 0},
-    {key: '9', name: 'New deck 2', count: 0},
-    {key: '10', name: 'New deck 2', count: 0},
-    {key: '11', name: 'udacicards', count: 3},
-    {key: '12', name: 'new deck', count: 0},
-    {key: '13', name: 'New deck 2', count: 0},
-    {key: '14', name: 'New deck 2', count: 0},
-    {key: '15', name: 'New deck 2', count: 0},
-  ]
+class DeckListView extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text>{JSON.stringify(this.props)}</Text>
+        <Text>{JSON.stringify(this.props.decks)}</Text>
+        <Text>{JSON.stringify(this.props.decks.decksList)}</Text>
+
         <FlatList
-          data={this.decks}
+          data={this.props.decks.decksList}
           renderItem={({item})=> 
-            <View key={item.key} style={styles.item}>
-              <Text style={{fontSize: 30}}>{item.name}</Text>
+            <View key={item.title} style={styles.item}>
+              <Text style={{fontSize: 30}}>{item.title}</Text>
               <Text style={{fontSize: 15, justifyContent: 'center'}}>{item.count} cards</Text>
             </View>
         }/>
@@ -46,3 +34,11 @@ const styles = StyleSheet.create({
     borderWidth: 1
   },
 })
+
+function mapStateToProps ({decks}) {
+  return {
+    decks
+  }
+}
+
+export default connect(mapStateToProps)(DeckListView)
