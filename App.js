@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
-import AddDeck from './components/AddDeck';
-import DeckListView from './components/DeckListView';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import AddDeck from './components/AddDeck'
+import DeckListView from './components/DeckListView'
+import DeckView from './components/DeckView'
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation'
 
 const Tabs = createBottomTabNavigator({
   Decks: {
@@ -17,7 +18,27 @@ const Tabs = createBottomTabNavigator({
   },
 })
 
-let Navigation = createAppContainer(Tabs)
+let TabsNavigation = createAppContainer(Tabs)
+
+const Stacks = createStackNavigator(
+  {
+    DeckView : {
+      screen: DeckView,
+      // navigationOptions: ({ navigation }) => ({
+      //   title: navigation.state.params.deck.title
+      // })
+    },
+    Main: {
+      screen: TabsNavigation
+    }
+  },
+  {
+    initialRouteName: "Main",
+  }
+)
+
+let Navigation = createAppContainer(Stacks)
+
 
 export default class App extends React.Component {
   render() {
