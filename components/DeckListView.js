@@ -4,9 +4,7 @@ import { Text, View, TouchableOpacity, FlatList, StyleSheet } from 'react-native
 import { connect } from 'react-redux'
 
 class DeckListView extends Component {
-  navigateToDockView = () => {
-    // debugger
-    // this.console.log(this.props.navigation)
+  navigateToDockView = (deck) => {
     this.props.navigation.navigate('DeckView', { deck: deck })
   }
   render() {
