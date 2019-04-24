@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
 import AddDeck from './components/AddDeck'
+import AddCard from './components/AddCard'
 import DeckListView from './components/DeckListView'
 import DeckView from './components/DeckView'
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation'
@@ -27,6 +28,9 @@ const Stacks = createStackNavigator(
       // navigationOptions: ({ navigation }) => ({
       //   title: navigation.state.params.deck.title
       // })
+    },
+    AddCard: {
+      screen: AddCard,
     },
     Main: {
       screen: TabsNavigation

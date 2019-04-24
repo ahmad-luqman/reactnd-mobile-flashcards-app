@@ -14,7 +14,7 @@ class DeckView extends Component {
 
         <TouchableOpacity 
           style={{backgroundColor: black, marginTop: 20, padding: 10 }}
-          onPress={this.submit}
+          onPress={()=>{this.props.navigation.navigate('AddCard', { deck: deck })}}
         >
           <Text style={{color: white, alignItems: "center"}}>Add Card</Text>
         </TouchableOpacity>
