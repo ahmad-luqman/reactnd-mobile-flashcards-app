@@ -6,16 +6,16 @@ import { connect } from 'react-redux'
 
 class AddDeck extends Component {
   state = {
-    input: ''
+    title: ''
   }
 
   submit = () => {
-    const { input } = this.state
-    this.props.addDeck({input})
+    const { title } = this.state
+    this.props.addDeck({title})
   }
 
   render() {
-    const { input } = this.state
+    const { title } = this.state
 
     return (
       <View style={styles.container}>
@@ -23,8 +23,8 @@ class AddDeck extends Component {
         <View style={styles.box}>
           <TextInput
             placeholder="Deck Title"
-            value={input}
-            onChangeText={(input) => this.setState({input})}/>
+            value={title}
+            onChangeText={(title) => this.setState({title})}/>
         </View>
         <TouchableOpacity 
           style={{backgroundColor: black, marginTop: 20, padding: 10 }}
@@ -32,7 +32,7 @@ class AddDeck extends Component {
         >
           <Text style={{color: white, alignItems: "center"}}>Submit</Text>
         </TouchableOpacity>
-        <Text>{JSON.stringify(input)}</Text>
+        <Text>{JSON.stringify(title)}</Text>
       </View>
     )
   }

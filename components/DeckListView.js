@@ -10,17 +10,15 @@ class DeckListView extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{JSON.stringify(this.props)}</Text>
         <Text>{JSON.stringify(this.props.decks)}</Text>
-        <Text>{JSON.stringify(this.props.decks.decksList)}</Text>
 
         <FlatList
-          data={this.props.decks.decksList}
+          data={this.props.decks}
           renderItem={({item})=> 
             <View key={item.title} style={styles.item}>
               <TouchableOpacity onPress={()=>{this.props.navigation.navigate('DeckView', { deck: item })}}>
                 <Text style={{fontSize: 30}}>{item.title}</Text>
-                <Text style={{fontSize: 15, justifyContent: 'center'}}>{item.count} cards</Text>
+                <Text style={{fontSize: 15, justifyContent: 'center'}}>{item.questions.length} cards</Text>
               </TouchableOpacity>
             </View>
         }/>
@@ -43,7 +41,10 @@ const styles = StyleSheet.create({
 
 function mapStateToProps ({decks}) {
   return {
-    decks
+    decks: Object.keys(decks).map(key => ({
+      title: decks[key].title,
+      questions: decks[key].questions,
+    }))
   }
 }
 

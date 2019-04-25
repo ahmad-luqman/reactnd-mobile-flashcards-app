@@ -1,26 +1,32 @@
-import { RECEIVE_DECKS, ADD_DECK } from '../actions'
+import { ADD_CARD, ADD_DECK } from '../actions'
 import { combineReducers } from 'redux';
-
-const initialState = {
-  decksList: []
-}
+import { initialState } from '../utils/initialState'
 
 function decks (state = initialState, action) {
   switch (action.type) {
-    case RECEIVE_DECKS :
+    case ADD_CARD :
       return {
         ...state,
-        ...action.decks,
+        [action.deck.title]: {
+          title: state[action.deck.title].title,
+          count: state[action.deck.title].count + 1,
+          questions: [
+            ...state[action.deck.title].questions,
+            {
+              question: action.deck.question,
+              answer: action.deck.answer,
+            },
+          ],
+        }
       }
     case ADD_DECK :
+      console.log(action)
       return {
         ...state,
-        decksList: [...state.decksList, {
-          title: action.deck.input, 
-          count: 0,
+        [action.deck.title]: {
+          title: action.deck.title,
           questions: []
-        }]
-        
+        }
       }
     default :
       return state

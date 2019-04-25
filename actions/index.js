@@ -1,10 +1,10 @@
-export const RECEIVE_DECKS = 'RECEIVE_DECKS'
+export const ADD_CARD = 'ADD_CARD'
 export const ADD_DECK = 'ADD_DECK'
 
-export function receiveDecks (decks) {
+export function addCard (card) {
   return {
-    type: RECEIVE_DECKS,
-    decks,
+    type: ADD_CARD,
+    card,
   }
 }
 

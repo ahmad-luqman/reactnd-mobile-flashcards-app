@@ -9,7 +9,7 @@ class DeckView extends Component {
       <View style={styles.container}>
         <View>
           <Text style={{fontSize: 50}}>{deck.title}</Text>
-          <Text style={{fontSize: 30, justifyContent: 'center'}}>{deck.count} cards</Text>
+          <Text style={{fontSize: 30, justifyContent: 'center'}}>{deck.questions.length} cards</Text>
         </View>
 
         <TouchableOpacity 
