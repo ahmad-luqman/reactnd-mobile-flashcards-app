@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, FlatList, StyleSheet } from 'react-native'
-//import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux'
 
 class DeckListView extends Component {
@@ -14,6 +13,7 @@ class DeckListView extends Component {
 
         <FlatList
           data={this.props.decks}
+          keyExtractor={item => item.title}
           renderItem={({item})=> 
             <View key={item.title} style={styles.item}>
               <TouchableOpacity onPress={()=>{this.props.navigation.navigate('DeckView', { deck: item })}}>
