@@ -1,11 +1,23 @@
 import React, { Component } from 'react'
 import { Text, TextInput, TouchableOpacity, StyleSheet, View } from 'react-native'
 import { black, white } from '../utils/colors'
+import { addCard } from '../actions'
+import { connect } from 'react-redux'
 
 class AddCard extends Component {
   state = {
+    title: '',
     question: '',
     answer: ''
+  }
+  submit = () => {
+    const card = {
+      title: this.props.navigation.state.params.deck.title,
+      question: this.state.question,
+      answer: this.state.answer,
+    }
+    this.props.addCard(card)
+    this.props.navigation.navigate('Decks')
   }
   render() {
     const { question, answer } = this.state
@@ -51,4 +63,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AddCard
+export default connect(null,{addCard})(AddCard)

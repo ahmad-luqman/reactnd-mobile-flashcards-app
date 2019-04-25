@@ -7,20 +7,19 @@ function decks (state = initialState, action) {
     case ADD_CARD :
       return {
         ...state,
-        [action.deck.title]: {
-          title: state[action.deck.title].title,
-          count: state[action.deck.title].count + 1,
+        [action.card.title]: {
+          title: state[action.card.title].title,
+          count: state[action.card.title].count + 1,
           questions: [
-            ...state[action.deck.title].questions,
+            ...state[action.card.title].questions,
             {
-              question: action.deck.question,
-              answer: action.deck.answer,
+              question: action.card.question,
+              answer: action.card.answer,
             },
           ],
         }
       }
     case ADD_DECK :
-      console.log(action)
       return {
         ...state,
         [action.deck.title]: {
