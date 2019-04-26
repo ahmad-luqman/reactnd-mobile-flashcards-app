@@ -8,6 +8,7 @@ import AddDeck from './components/AddDeck'
 import AddCard from './components/AddCard'
 import DeckListView from './components/DeckListView'
 import DeckView from './components/DeckView'
+import QuizView from './components/QuizView'
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation'
 
 const Tabs = createBottomTabNavigator({
@@ -31,6 +32,9 @@ const Stacks = createStackNavigator(
     },
     AddCard: {
       screen: AddCard,
+    },
+    QuizView: {
+      screen: QuizView,
     },
     Main: {
       screen: TabsNavigation
