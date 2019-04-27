@@ -19,7 +19,7 @@ class AddCard extends Component {
     }
     this.props.addCard(card)
     addCardToDeck(card.title, card)
-    this.props.navigation.navigate('Decks')
+    this.props.navigation.navigate('DeckView', { deck: this.props.navigation.state.params.deck })
   }
   render() {
     const { question, answer } = this.state
