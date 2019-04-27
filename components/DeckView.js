@@ -8,6 +8,14 @@ import { removeDeck  } from '../actions'
 class DeckView extends Component {
   render() {
     const {params} = this.props.navigation.state
+    if(params.deck === undefined || this.props.decks[params.deck.title] === undefined) {
+      return (
+      <View>
+        <Text>Blank View</Text>
+      </View>
+      )
+    }
+    else {
     const deck = this.props.decks[params.deck.title]
     return (
       <View style={styles.container}>
@@ -33,15 +41,16 @@ class DeckView extends Component {
         <TouchableOpacity 
           style={{backgroundColor: black, marginTop: 20, padding: 10 }}
           onPress={()=>{
-            this.props.removeDeck(deck)
-            deleteDeck(deck.title)
+            const title = deck.title
             this.props.navigation.navigate('Decks')
+            deleteDeck(title)
+            this.props.removeDeck(deck)
           }}
         >
           <Text style={{color: white, alignItems: "center"}}>Delete Deck</Text>
         </TouchableOpacity>
       </View>
-    )
+    )}
   }
 }
 
