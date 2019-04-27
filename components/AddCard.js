@@ -26,7 +26,6 @@ class AddCard extends Component {
     return (
       <View style={styles.container}>
         <Text style={{fontSize: 50, textAlign: "center"}}>Add Card View</Text>
-        <Text>{JSON.stringify(this.props.navigation.state.params.deck)}</Text>
         <View style={styles.box}>
           <TextInput
             placeholder="Enter in the question"

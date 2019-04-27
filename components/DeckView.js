@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
 import { black, white } from '../utils/colors'
+import { deleteDeck } from '../utils/api'
+import { removeDeck  } from '../actions'
 
 class DeckView extends Component {
   render() {
@@ -25,6 +28,17 @@ class DeckView extends Component {
         >
           <Text style={{color: white, alignItems: "center"}}>Start Quiz</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={{backgroundColor: black, marginTop: 20, padding: 10 }}
+          onPress={()=>{
+            this.props.removeDeck(deck)
+            deleteDeck(deck.title)
+            this.props.navigation.navigate('Decks')
+          }}
+        >
+          <Text style={{color: white, alignItems: "center"}}>Delete Deck</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -42,4 +56,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default DeckView
+export default connect(null, {removeDeck})(DeckView)

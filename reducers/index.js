@@ -1,4 +1,4 @@
-import { ADD_CARD, ADD_DECK } from '../actions'
+import { ADD_CARD, ADD_DECK, REMOVE_DECK } from '../actions'
 import { combineReducers } from 'redux';
 import { initialState } from '../utils/initialState'
 
@@ -27,6 +27,9 @@ function decks (state = {}, action) {
           questions: []
         }
       }
+    case REMOVE_DECK:
+      const { [action.deck.title]: value, ...rest } = state
+      return rest
     default :
       return state
   }

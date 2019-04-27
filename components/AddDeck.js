@@ -35,7 +35,6 @@ class AddDeck extends Component {
         >
           <Text style={{color: white, alignItems: "center"}}>Submit</Text>
         </TouchableOpacity>
-        <Text>{JSON.stringify(title)}</Text>
       </View>
     )
   }

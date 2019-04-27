@@ -41,8 +41,6 @@ class DeckListView extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>{JSON.stringify(this.props.decks)}</Text>
-
         <FlatList
           data={this.props.decks}
           keyExtractor={item => item.title}

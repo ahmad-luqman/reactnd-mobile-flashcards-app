@@ -1,5 +1,6 @@
 export const ADD_CARD = 'ADD_CARD'
 export const ADD_DECK = 'ADD_DECK'
+export const REMOVE_DECK = 'REMOVE_DECK'
 
 export function addCard (card) {
   return {
@@ -11,6 +12,13 @@ export function addCard (card) {
 export function addDeck (deck) {
   return {
     type: ADD_DECK,
+    deck,
+  }
+}
+
+export function removeDeck (deck) {
+  return {
+    type: REMOVE_DECK,
     deck,
   }
 }
