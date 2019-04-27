@@ -7,7 +7,8 @@ import { removeDeck  } from '../actions'
 
 class DeckView extends Component {
   render() {
-    const {deck} = this.props.navigation.state.params
+    const {params} = this.props.navigation.state
+    const deck = this.props.decks[params.deck.title]
     return (
       <View style={styles.container}>
         <View>
@@ -56,4 +57,10 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect(null, {removeDeck})(DeckView)
+function mapStateToProps ({decks}) {
+  return {
+    decks
+  }
+}
+
+export default connect(mapStateToProps, {removeDeck})(DeckView)

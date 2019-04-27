@@ -36,6 +36,7 @@ class QuizView extends Component {
       this.setState(() => ({
         correctAnswers: this.state.correctAnswers + 1,
         currentQuizCount: this.state.currentQuizCount + 1,
+        showAnswer: false
       }))
   }
 
@@ -47,7 +48,7 @@ class QuizView extends Component {
     if (this.state.currentQuizCount === totalQuizCount)
       this.setState(() => ({ quizCompleted: true }))
     else
-      this.setState(() => ({ currentQuizCount: this.state.currentQuizCount + 1 }))
+      this.setState(() => ({ currentQuizCount: this.state.currentQuizCount + 1, showAnswer: false }))
   }
 
   render() {
