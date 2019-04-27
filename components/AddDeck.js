@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, TextInput, TouchableOpacity, StyleSheet, View } from 'react-native'
 import { black, white } from '../utils/colors'
 import { addDeck } from '../actions'
+import { saveDeckTitle } from '../utils/api'
 import { connect } from 'react-redux'
 
 class AddDeck extends Component {
@@ -12,6 +13,7 @@ class AddDeck extends Component {
   submit = () => {
     const { title } = this.state
     this.props.addDeck({title})
+    saveDeckTitle(title)
     this.props.navigation.navigate('Decks')
   }
 

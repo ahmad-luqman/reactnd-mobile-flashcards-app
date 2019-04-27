@@ -2,7 +2,7 @@ import { ADD_CARD, ADD_DECK } from '../actions'
 import { combineReducers } from 'redux';
 import { initialState } from '../utils/initialState'
 
-function decks (state = initialState, action) {
+function decks (state = {}, action) {
   switch (action.type) {
     case ADD_CARD :
       return {

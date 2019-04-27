@@ -1,12 +1,36 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, FlatList, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
+import { AppLoading} from 'expo'
+import { getDecks } from '../utils/api'
+import { addDeck } from '../actions'
 
 class DeckListView extends Component {
+  state = {
+    ready: false,
+  }
+  componentDidMount () {
+    const { dispatch } = this.props
+
+    getDecks()
+      .then((decks) => {
+        //if(decks!==null)
+        Object.keys(decks).map(key => {
+          dispatch(addDeck({title: key}))
+        })
+      })
+      .then(() => this.setState(() => ({ready: true})))
+  }
   navigateToDockView = (deck) => {
     this.props.navigation.navigate('DeckView', { deck: deck })
   }
   render() {
+    const { ready } = this.state
+
+    if (ready === false) {
+      return <AppLoading />
+    }
+
     return (
       <View style={styles.container}>
         <Text>{JSON.stringify(this.props.decks)}</Text>
