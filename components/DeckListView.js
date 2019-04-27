@@ -3,7 +3,7 @@ import { Text, View, TouchableOpacity, FlatList, StyleSheet } from 'react-native
 import { connect } from 'react-redux'
 import { AppLoading} from 'expo'
 import { getDecks } from '../utils/api'
-import { addDeck } from '../actions'
+import { addDeck, addCard } from '../actions'
 
 class DeckListView extends Component {
   state = {
@@ -17,6 +17,14 @@ class DeckListView extends Component {
         //if(decks!==null)
         Object.keys(decks).map(key => {
           dispatch(addDeck({title: key}))
+          decks[key].questions.forEach((item) =>{
+            const card = {
+              title: key,
+              question: item.question,
+              answer: item.question,
+            }
+            dispatch(addCard(card))
+          })
         })
       })
       .then(() => this.setState(() => ({ready: true})))

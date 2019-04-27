@@ -3,6 +3,7 @@ import { Text, TextInput, TouchableOpacity, StyleSheet, View } from 'react-nativ
 import { black, white } from '../utils/colors'
 import { addCard } from '../actions'
 import { connect } from 'react-redux'
+import { addCardToDeck } from '../utils/api'
 
 class AddCard extends Component {
   state = {
@@ -17,6 +18,7 @@ class AddCard extends Component {
       answer: this.state.answer,
     }
     this.props.addCard(card)
+    addCardToDeck(card.title, card)
     this.props.navigation.navigate('Decks')
   }
   render() {

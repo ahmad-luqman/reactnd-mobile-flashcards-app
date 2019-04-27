@@ -39,12 +39,12 @@ export function removeDeck (key) {
 }
 
 export function addCardToDeck(title, card) {
-  return AsyncStorage.getItem(DECK_STORAGE_KEY)
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
   .then((results) => {
       const data = JSON.parse(results)
       if(data[title] !== undefined) {
           data[title].questions.push(card);
-          AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data))
+          AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data))
       }
   })
 }
